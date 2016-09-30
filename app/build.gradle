@@ -24,4 +24,6 @@ android {
 dependencies {
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile 'com.google.code.gson:gson-parent:2.7'
+    compile 'com.google.code.gson:gson:2.7'
 }

@@ -31,3 +31,8 @@ proguard/
 *.war
 *.ear
 app/app.iml
+<<<<<<< HEAD
+=======
+.idea
+gradle
+>>>>>>> lab3

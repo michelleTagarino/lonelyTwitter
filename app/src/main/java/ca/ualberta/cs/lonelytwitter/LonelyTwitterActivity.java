@@ -1,3 +1,10 @@
+/*
+Copyright (C) 2016 Team 20, CMPUT301, University of Alberta - All Rights Reserved.
+You may use, copy or distribute this code under terms and conditions of University of Alberta
+and Code of Student Behavior.
+Please contact tagarino@ualberta.ca for more details or questions.
+*/
+
 package ca.ualberta.cs.lonelytwitter;
 
 import java.io.BufferedReader;
@@ -29,18 +36,46 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
+/**
+ * This class is the main view class in lonelyTwitter class.
+ * It deals with user inputs, saves/loads them in/from the file FILENAME (file.sav).
+ * <p> You can access this file from Android Device Monitor. </p>
+ * <pre> pre-formatted	text</pre>
+ * <code>
+ *     pseudo-code that is used in this class is as follows: <br>
+ *     step 1 <br>
+ *     step 2 <br>
+ * </code>
+ * <ol>
+ *     <li>first item</li>
+ *     <li>second item</li>
+ *     <li>third item</li>
+ * </ol>
+ * <ul>
+ *     <li>first item</li>
+ *     <li>second item</li>
+ *     <li>third item</li>
+ * </ul>
+ * @author Michelle
+ * @since 1.4
+ * @see NormalTweet
+ * @see java.io.BufferedReader
+ * @see TweetList
+ */
 public class LonelyTwitterActivity extends Activity {
 
+	/**
+	 * This is the name of the file that is saved in your virtual device.
+	 * You can access it through Android Device Monitor by selecting your app,
+	 * then data -> data -> file.sav
+	 * @see NormalTweet
+	 * @author Michelle
+	 */
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
 	private ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
 	private ArrayAdapter<Tweet> adapter;
-	/**
-	 * ATTENTION: This was auto-generated to implement the App Indexing API.
-	 * See https://g.co/AppIndexing/AndroidStudio for more information.
-	 */
-	private GoogleApiClient client;
 
 	/**
 	 * Called when the activity is first created.
@@ -75,37 +110,28 @@ public class LonelyTwitterActivity extends Activity {
 				adapter.notifyDataSetChanged();
 			}
 		});
-		// ATTENTION: This was auto-generated to implement the App Indexing API.
-		// See https://g.co/AppIndexing/AndroidStudio for more information.
-		client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 	}
 
+	/**
+	 * This method starts after the app first gets created.
+	 * It will call the method that loads the json file and generates the tweets from its contents.
+	 * It creates an Array Adapter and displays it through the ListView.
+	 */
 	@Override
 	protected void onStart() {
-		// TODO Auto-generated method stub
 		super.onStart();
-		// ATTENTION: This was auto-generated to implement the App Indexing API.
-		// See https://g.co/AppIndexing/AndroidStudio for more information.
-		client.connect();
 		loadFromFile();
 		adapter = new ArrayAdapter<Tweet>(this,
 				R.layout.list_item, tweetList);
 		oldTweetsList.setAdapter(adapter);
-		// ATTENTION: This was auto-generated to implement the App Indexing API.
-		// See https://g.co/AppIndexing/AndroidStudio for more information.
-		Action viewAction = Action.newAction(
-				Action.TYPE_VIEW, // TODO: choose an action type.
-				"LonelyTwitter Page", // TODO: Define a title for the content shown.
-				// TODO: If you have web page content that matches this app activity's content,
-				// make sure this auto-generated web page URL is correct.
-				// Otherwise, set the URL to null.
-				Uri.parse("http://host/path"),
-				// TODO: Make sure this auto-generated app URL is correct.
-				Uri.parse("android-app://ca.ualberta.cs.lonelytwitter/http/host/path")
-		);
-		AppIndex.AppIndexApi.start(client, viewAction);
 	}
 
+	/**
+	 * This method loads the json file and generates the tweets from its contents.
+	 * @throws RuntimeException
+	 * @exception FileNotFoundException
+	 * @exception IOException
+	 */
 	private void loadFromFile() {
 		tweetList = new ArrayList<Tweet>();
 		try {
@@ -116,48 +142,29 @@ public class LonelyTwitterActivity extends Activity {
 			Type listType = new TypeToken<ArrayList<NormalTweet>>() {}.getType();
 			tweetList = gson.fromJson(in, listType);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			tweetList = new ArrayList<Tweet>();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			throw new RuntimeException();
 		}
 	}
 
+	/**
+	 * This method will save the updated file in the json file.
+	 * @throws RuntimeException
+	 * @exception FileNotFoundException
+	 * @exception IOException
+	 */
 	private void saveInFile() {
 		try {
-
 			FileOutputStream fos = openFileOutput(FILENAME, 0);
 			OutputStreamWriter writer = new OutputStreamWriter(fos);
 			Gson gson = new Gson();
 			gson.toJson(tweetList, writer);
 			writer.flush();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			throw new RuntimeException();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			throw new RuntimeException();
 		}
-	}
-
-	@Override
-	public void onStop() {
-		super.onStop();
-
-		// ATTENTION: This was auto-generated to implement the App Indexing API.
-		// See https://g.co/AppIndexing/AndroidStudio for more information.
-		Action viewAction = Action.newAction(
-				Action.TYPE_VIEW, // TODO: choose an action type.
-				"LonelyTwitter Page", // TODO: Define a title for the content shown.
-				// TODO: If you have web page content that matches this app activity's content,
-				// make sure this auto-generated web page URL is correct.
-				// Otherwise, set the URL to null.
-				Uri.parse("http://host/path"),
-				// TODO: Make sure this auto-generated app URL is correct.
-				Uri.parse("android-app://ca.ualberta.cs.lonelytwitter/http/host/path")
-		);
-		AppIndex.AppIndexApi.end(client, viewAction);
-		client.disconnect();
 	}
 }

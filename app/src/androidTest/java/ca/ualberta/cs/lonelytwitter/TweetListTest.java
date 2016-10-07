@@ -8,11 +8,17 @@ import java.util.ArrayList;
  * Created by michelletagarino on 16-09-29.
  */
 public class TweetListTest extends ActivityInstrumentationTestCase2{
+
+    /**
+     * Instantiates a new Tweet list test.
+     */
     public TweetListTest() {
         super(ca.ualberta.cs.lonelytwitter.LonelyTwitterActivity.class);
     }
 
-    //Tests if there is a
+    /**
+     * Tests if there is tweet duplicate.
+     */
     public void testAddTweet(){
         TweetList tweets = new TweetList();
         Tweet tweet = new NormalTweet("adding tweet");
@@ -20,6 +26,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2{
         assertTrue(tweets.hasTweet(tweet));
     }
 
+    /**
+     * Tests if there is a tweet duplicate.
+     */
     public void testAddTweetException(){
         TweetList tweets = new TweetList();
         Tweet tweet = new NormalTweet("adding tweet");
@@ -27,6 +36,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2{
         assertTrue(tweets.hasTweet(tweet));
     }
 
+    /**
+     * Tests if a tweet has been truly deleted using the delete method in the TweetList class.
+     */
     public void testDelete(){
         TweetList list = new TweetList();
         Tweet tweet= new NormalTweet("test");
@@ -35,6 +47,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2{
         assertFalse(list.hasTweet(tweet));
     }
 
+    /**
+     * Tests if the getTweet method truly returns the tweet at the specified index.
+     */
     public void testGetTweet(){
         TweetList tweets = new TweetList();
         Tweet tweet = new NormalTweet("test");
@@ -43,6 +58,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2{
         assertEquals(returnedTweet.getMessage(),tweet.getMessage()); //checks to see if two objects are equal
     }
 
+    /**
+     * Tests if the hasTweet method works.
+     */
     public void testHasTweet(){
         TweetList list = new TweetList();
         Tweet tweet = new NormalTweet("test");
@@ -50,6 +68,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2{
         assertTrue(list.hasTweet(tweet));
     }
 
+    /**
+     * Tests if the getTweets method works.
+     */
     public void testGetTweets() {
         TweetList list1 = new TweetList();
         ArrayList<Tweet> list2 = new ArrayList<Tweet>();
@@ -67,6 +88,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2{
 
     }
 
+    /**
+     * Tests if the getCount method works.
+     */
     public void testGetCount(){
         TweetList tweets = new TweetList();
         Tweet tweet = new NormalTweet("test");

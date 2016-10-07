@@ -9,30 +9,56 @@ public class TweetList {
 
     private ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 
-    public TweetList(){
-    }
+    /**
+     * Instantiates a new Tweet list.
+     */
+    public TweetList(){}
 
-    //Returns a tweet at the specified index
+    /**
+     * This method gets the tweet at the specified index.
+     *
+     * @param index the index in the array list.
+     * @return the tweet at a specified index.
+     */
     public Tweet getTweet(int index){
         return tweets.get(index);
     }
 
-    //Returns true if there is tweet that equals another tweet
+    /**
+     * This method tests whether or not the list of tweets contains duplicates.
+     *
+     * @param tweet the tweet.
+     * @return the boolean.
+     */
     public boolean hasTweet(Tweet tweet){
         return tweets.contains(tweet);
     }
 
-    //Adds a tweet to the list
+    /**
+     * This method adds a tweet to the list.
+     *
+     * @param tweet the tweet.
+     */
     public void add(Tweet tweet){
         tweets.add(tweet);
     }
 
-    //Deletes a tweet from the list
+    /**
+     * This method deletes a tweet from the list.
+     *
+     * @param tweet the tweet.
+     */
     public void delete(Tweet tweet){
         tweets.remove(tweet);
     }
 
-    //Adds a tweet to the list. If the tweet is a duplicate, an IllegalArgumentException is thrown
+    /**
+     * This method adds a tweet to the list. If the tweet is a duplicate,
+     * an IllegalArgumentException is thrown.
+     *
+     * @param tweet the tweet.
+     * @throws IllegalArgumentException
+     */
     public void addTweet(Tweet tweet){
         try{
             if (!hasTweet(tweet)){
@@ -43,12 +69,20 @@ public class TweetList {
         }
     }
 
-    //Returns a list of tweets in chronological order
+    /**
+     * This method returns a list of tweets in chronological order.
+     *
+     * @return the array list.
+     */
     public ArrayList<Tweet> getTweets(){
         return tweets;
     }
 
-    //Gets the exact count of tweets in the tweet list
+    /**
+     * This method gets the exact count of tweets in the tweet list.
+     *
+     * @return int the size of the list of tweets.
+     */
     public int getCount(){
         return tweets.size();
     }

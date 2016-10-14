@@ -42,7 +42,6 @@ public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2<
 
         solo.clickOnButton("Clear");
         assertFalse(solo.waitForText("Test Tweet!"));
-
     }
 
     public void testClickTweetList(){
@@ -60,13 +59,13 @@ public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2<
         Tweet tweet =(Tweet) oldTweetsList.getItemAtPosition(0);
         assertEquals("Test Tweet!", tweet.getMessage());
 
-
         solo.clickInList(0);
-
 
         solo.assertCurrentActivity("Wrong Activity", EditTweetActivity.class);
 
         assertTrue(solo.waitForText("New Activity"));
+
+        assertTrue(solo.waitForText("Test Tweet!"));
 
         solo.goBack();
         solo.assertCurrentActivity("Wrong Activity", LonelyTwitterActivity.class);

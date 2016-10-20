@@ -21,13 +21,19 @@ import java.util.Date;
 
 import android.app.Activity;
 import android.content.Context;
+<<<<<<< HEAD
 import android.net.Uri;
+=======
+import android.content.Intent;
+>>>>>>> lab6finish
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -64,6 +70,7 @@ import com.google.gson.stream.JsonReader;
  */
 public class LonelyTwitterActivity extends Activity {
 
+<<<<<<< HEAD
 	/**
 	 * This is the name of the file that is saved in your virtual device.
 	 * You can access it through Android Device Monitor by selecting your app,
@@ -71,15 +78,27 @@ public class LonelyTwitterActivity extends Activity {
 	 * @see NormalTweet
 	 * @author Michelle
 	 */
+=======
+	private Activity activity = this;
+
+>>>>>>> lab6finish
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
 	private ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
 	private ArrayAdapter<Tweet> adapter;
 
+<<<<<<< HEAD
 	/**
 	 * Called when the activity is first created.
 	 */
+=======
+	public ListView getOldTweetsList(){
+		return oldTweetsList;
+	}
+
+
+>>>>>>> lab6finish
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -107,9 +126,29 @@ public class LonelyTwitterActivity extends Activity {
 			public void onClick(View v) {
 				setResult(RESULT_OK);
 				tweetList.clear();
+<<<<<<< HEAD
 				adapter.notifyDataSetChanged();
 			}
 		});
+=======
+				deleteFile(FILENAME);
+				adapter.notifyDataSetChanged();
+			}
+		});
+
+		oldTweetsList.setOnItemClickListener(new
+				AdapterView.OnItemClickListener(){
+					public void onItemClick(AdapterView<?> parent, View view,
+											int position ,long id){
+						Intent intent = new Intent(activity, EditTweetActivity.class);
+						intent.putExtra("newText", tweetList.get(0).getMessage());
+						startActivity(intent);
+					}
+
+				});
+
+
+>>>>>>> lab6finish
 	}
 
 	/**
@@ -126,6 +165,7 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setAdapter(adapter);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * This method loads the json file and generates the tweets from its contents.
 	 * @throws RuntimeException
@@ -134,6 +174,10 @@ public class LonelyTwitterActivity extends Activity {
 	 */
 	private void loadFromFile() {
 		tweetList = new ArrayList<Tweet>();
+=======
+
+	private void loadFromFile() {
+>>>>>>> lab6finish
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
 			BufferedReader in = new BufferedReader(new InputStreamReader(fis));
@@ -142,18 +186,26 @@ public class LonelyTwitterActivity extends Activity {
 			Type listType = new TypeToken<ArrayList<NormalTweet>>() {}.getType();
 			tweetList = gson.fromJson(in, listType);
 		} catch (FileNotFoundException e) {
+<<<<<<< HEAD
+=======
+			// TODO Auto-generated catch block
+>>>>>>> lab6finish
 			tweetList = new ArrayList<Tweet>();
 		} catch (IOException e) {
 			throw new RuntimeException();
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 * This method will save the updated file in the json file.
 	 * @throws RuntimeException
 	 * @exception FileNotFoundException
 	 * @exception IOException
 	 */
+=======
+
+>>>>>>> lab6finish
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME, 0);

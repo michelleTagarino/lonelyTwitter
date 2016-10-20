@@ -2,9 +2,6 @@ package ca.ualberta.cs.lonelytwitter;
 
 import java.util.Date;
 
-/**
- * Created by watts1 on 9/15/16.
- */
 public abstract class Tweet implements Tweetable {
     private String message;
     private Date date;
@@ -42,6 +39,7 @@ public abstract class Tweet implements Tweetable {
      */
     public abstract Boolean isImportant();
 
+<<<<<<< HEAD
     /**
      * This method takes the the user's input text and uses it when creating a new Tweet object.
      * The method will throw an exception if the tweet is greater than 140 characters long.
@@ -49,6 +47,9 @@ public abstract class Tweet implements Tweetable {
      * @param message the message
      * @throws TweetTooLongException the tweet too long exception
      */
+=======
+
+>>>>>>> lab6finish
     public void setMessage(String message) throws TweetTooLongException {
         if (message.length() > 140){
             //Do Something!

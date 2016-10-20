@@ -3,11 +3,14 @@ package ca.ualberta.cs.lonelytwitter;
 
 import java.util.Date;
 
+<<<<<<< HEAD
 /**
  * Created by watts1 on 9/15/16.
  */
 
 
+=======
+>>>>>>> lab6finish
 public interface Tweetable {
 
     /**
@@ -16,6 +19,11 @@ public interface Tweetable {
      * @return the message
      */
     public String getMessage();
+<<<<<<< HEAD
+=======
+
+    public Date getDate();
+>>>>>>> lab6finish
 
     /**
      * Gets date.

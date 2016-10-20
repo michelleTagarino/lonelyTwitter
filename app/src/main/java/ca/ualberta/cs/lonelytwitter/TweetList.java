@@ -2,6 +2,7 @@ package ca.ualberta.cs.lonelytwitter;
 
 import java.util.ArrayList;
 
+<<<<<<< HEAD
 /**
  * Created by michelletagarino on 16-09-29.
  */
@@ -20,20 +21,33 @@ public class TweetList {
      * @param index the index in the array list.
      * @return the tweet at a specified index.
      */
+=======
+public class TweetList {
+    private ArrayList<Tweet> tweets = new ArrayList<Tweet>();
+
+    public TweetList(){
+
+    }
+
+>>>>>>> lab6finish
     public Tweet getTweet(int index){
         return tweets.get(index);
     }
 
+<<<<<<< HEAD
     /**
      * This method tests whether or not the list of tweets contains duplicates.
      *
      * @param tweet the tweet.
      * @return the boolean.
      */
+=======
+>>>>>>> lab6finish
     public boolean hasTweet(Tweet tweet){
         return tweets.contains(tweet);
     }
 
+<<<<<<< HEAD
     /**
      * This method adds a tweet to the list.
      *
@@ -86,4 +100,13 @@ public class TweetList {
     public int getCount(){
         return tweets.size();
     }
+=======
+    public void add(Tweet tweet) {
+        tweets.add(tweet);
+    }
+
+    public void delete(Tweet tweet) {
+        tweets.remove(tweet);
+    }
+>>>>>>> lab6finish
 }
